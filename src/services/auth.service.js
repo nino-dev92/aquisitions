@@ -8,12 +8,12 @@ export const hashPassword = async password => {
   try {
     return await bcrypt.hash(password, 10);
   } catch (error) {
-    logger.error(`Error hasing password: ${error}`);
+    logger.error('Error hasing password:', { cause: error });
     throw new Error('Error hashing');
   }
 };
 
-export const createUser = async ({ name, email, password, role = 'user' }) => {
+export const createUser = async ({ name, email, password, _role = 'user' }) => {
   try {
     const exisitingUser = await db
       .select()

@@ -5,8 +5,13 @@ on:
     branches: [main]
   workflow_dispatch:
 
+env:
+  REGISTRY: docker.io
+  IMAGE_name: ${{ secrets.DOCKER_USERNAME}}/kubernetes-demo-api
+
 jobs:
   docker-build-and-push:
+    name: Build and Push Docker Image
     runs-on: ubuntu-latest
 
     steps:
